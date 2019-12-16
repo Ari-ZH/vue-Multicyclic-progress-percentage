@@ -56,14 +56,8 @@
     margin: 0;
   }
   .circleTitleBox {
-    width: 112px;
-    height: 100px;
     position: absolute;
-    top: 0;
-    line-height: 20px;
     text-align: right;
-    vertical-align: text-top;
-    top: -5px;
     padding-right: 10px;
     box-sizing: border-box;
   }
@@ -71,160 +65,24 @@
 </style>
 <template>
   <section>
-    <!-- <section class="p-switch btn" @click="isDurationModel = !isDurationModel">
-      {{ isDurationModel ? '动画模式' : '持续模式' }}
-    </section> -->
-    <section class="p-test">
-      <circle-progress
-        id="circle1"
-        class="circleSmiall"
-        :isAnimation="true"
-        :isRound="true"
-        :width="width - 4 * (2 * ringSpacing)"
-        :radius="radius"
-        :progress="progressPro[0]"
-        :barColor="barColors[0]"
-        :duration="duration"
-        :delay="delay"
-        :timeFunction="timeFunction"
-        :backgroundColor="backgroundColor"
-      ></circle-progress>
-      <circle-progress
-        id="circle2"
-        ref="$circle"
-        class="circleSmiall"
-        :isAnimation="true"
-        :isRound="true"
-        :width="width - 3 * (2 * ringSpacing)"
-        :radius="radius"
-        :progress="progressPro[1]"
-        :barColor="barColors[1]"
-        :duration="duration"
-        :delay="delay"
-        :timeFunction="timeFunction"
-        :backgroundColor="backgroundColor"
-      ></circle-progress>
-      <circle-progress
-        id="circle3"
-        class="circleSmiall"
-        :isAnimation="true"
-        :isRound="true"
-        :width="width - 2 * (2 * ringSpacing)"
-        :radius="radius"
-        :progress="progressPro[2]"
-        :barColor="barColors[2]"
-        :duration="duration"
-        :delay="delay"
-        :timeFunction="timeFunction"
-        :backgroundColor="backgroundColor"
-      ></circle-progress>
-      <circle-progress
-        id="circle4"
-        class="circleSmiall"
-        :isAnimation="true"
-        :isRound="true"
-        :width="width - 1 * (2 * ringSpacing)"
-        :radius="radius"
-        :progress="progressPro[3]"
-        :barColor="barColors[3]"
-        :duration="duration"
-        :delay="delay"
-        :timeFunction="timeFunction"
-        :backgroundColor="backgroundColor"
-      ></circle-progress>
-      <circle-progress
-        id="circle5"
-        class="circlebig"
-        :isAnimation="true"
-        :isRound="true"
-        :width="width"
-        :radius="radius"
-        :progress="progressPro[4]"
-        :barColor="barColors[4]"
-        :duration="duration"
-        :delay="delay"
-        :timeFunction="timeFunction"
-        :backgroundColor="backgroundColor"
-      ></circle-progress>
-      <div class="circleTitleBox" style="">
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-      </div>
-    </section>
-    <!-- :class="n == option.ringNum ? 'circleBig' : 'circleSmiall'" -->
-    <section class="p-test">
-      <circle-progress
-        v-for="n in option.ringNum"
-        :id="'circle1' + n"
-        :isAnimation="true"
-        :isRound="true"
-        :width="option.width - (option.ringNum - n) * (2 * option.ringSpacing)"
-        :radius="option.radius"
-        :progress="option.progressPro[n - 1] * 0.75"
-        :barColor="option.barColors[n - 1]"
-        :duration="option.duration"
-        :timeFunction="option.timeFunction"
-        :backgroundColor="option.backgroundColor"
-        :style="
-          n == option.ringNum
-            ? 'position:relative;'
-            : 'position:absolute;top:' +
-              (option.ringNum - n) * option.ringSpacing +
-              'px;left:' +
-              (option.ringNum - n) * option.ringSpacing +
-              'px;'
-        "
-      ></circle-progress>
-      <div class="circleTitleBox" style="">
-        <p v-for="item in option.titles">{{ item }}</p>
-      </div>
-    </section>
+    <Circle-collection :option="options"></Circle-collection>
   </section>
 </template>
 <script>
-import CircleProgress from "./components/circle-progress";
 import CircleCollection from "./components/circleCollection";
 
 export default {
   components: {
-    CircleProgress
+    CircleCollection
   },
   data() {
     return {
-      isDurationModel: false, // 是否打开持续缓动模式
-      isShow: true,
-      progress: 70,
-      delay: 20,
-      barColor: "#F2AE57",
-      intervalTimer: null, // 持续模式，循环计时器
-      currentTime: 0, // 当前时间
-      durationTime: 60, // 持续模式总时长
-      radius: 8,
-      ringSpacing: 20, // 环间距
-      ringNum: 5, //环的个数
-      width: 220,
-      // 最大环宽度  直径
-      radius: 8,
-      //  环宽
-      progressPro: [17, 17, 17, 17, 75],
-      // 各个环百分比
-      barColors: ["#FF82A2", "#FEDD5E", "#70D2C9", "#5FC2FA", "#5FA1F7"],
-      // 各个颜色
-      duration: 500,
-      // 动画时长
-      titles: ["测试", "测试", "测试", "测试", "测试"],
-      backgroundColor: "#F1F1F1",
-      timeFunction: "cubic-bezier(0.99, 0.01, 0.22, 0.94)",
-
-      option: {
-        ringSpacing: 20, // 环间距
+      options: {
+        ringSpacing: 30, // 环间距
         ringNum: 5, //环的个数
-        width: 220,
+        // width: 420,
         // 最大环宽度  直径
-        radius: 8,
+        radius: 10,
         //  环宽
         progressPro: [17, 17, 17, 17, 100],
         // 各个环百分比
@@ -234,7 +92,9 @@ export default {
         // 动画时长
         titles: ["测试", "测试", "测试", "测试", "测试"],
         backgroundColor: "#F1F1F1",
-        timeFunction: "cubic-bezier(0.99, 0.01, 0.22, 0.94)"
+        timeFunction: "cubic-bezier(0.99, 0.01, 0.22, 0.94)",
+        // isAnimation:false,
+        // isRound:false
       }
     };
   },
