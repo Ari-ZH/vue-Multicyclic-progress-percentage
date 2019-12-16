@@ -67,7 +67,7 @@ export default {
     delay: {
       // 延迟多久执行
       type: [String, Number],
-      default: 200
+      default: 50
     },
     timeFunction: {
       // 动画缓动函数
