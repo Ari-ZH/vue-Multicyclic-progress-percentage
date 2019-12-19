@@ -20,7 +20,7 @@
     <circle-progress
       v-for="n in option.ringNum"
       :key="n"
-      :id="'circle1' + n"
+      :id="'id' + n"
       :isAnimation="option.isAnimation"
       :isRound="option.isRound"
       :width="option.width - (option.ringNum - n) * (2 * option.ringSpacing)"
@@ -49,7 +49,13 @@
         lineHeight: option.ringSpacing + 'px'
       }"
     >
-      <p v-for="item in option.titles">{{ item }}</p>
+     <div v-for="(item, i) in titlesr" style="display:flex;justify-content:space-between;">
+        <!-- {{
+          `${item} ${option.progressPro[option.progressPro.length - i - 1]}%`
+        }} -->
+        <div style="text-align:right;flex-grow:1;">{{item}}</div>
+        <div style="flex-basis:40px;flex-shrink:0;">{{option.progressPro[option.progressPro.length - i - 1]+'%'}}</div>
+      </div>
     </div>
   </section>
 </template>
@@ -60,19 +66,39 @@ export default {
 	  if(!this.option.width){
 		  this.$set(this.option, 'width', 250)
 	  }
+    if(!this.option.radius){
+		  this.$set(this.option, 'radius', 8)
+	  }
+    if(!this.option.backgroundColor){
+		  this.$set(this.option, 'backgroundColor',  "#F1F1F1")
+    }
+    if(!this.option.duration){
+		  this.$set(this.option, 'duration',  "1000")
+    }
+    if(!this.option.delay){
+		  this.$set(this.option, 'delay',  "500")
+    }
   },
   components: {
     CircleProgress
   },
+  computed:{
+    titlesr(){
+      return this.option.titles.reverse()
+    }
+  },
   props: {
+    id:{
+      type:String,
+      default:'Circle'
+    },
     option: {
+      // 此部分以下设置无效，仅仅作为编码提示
       width: {
-        type: [Number, String],
-        default: 250
+        type: [Number, String]
       }, // 最大圆的大小
       radius: {
-        type: [Number, String],
-        default: 8
+        type: [Number, String]
       }, // 进度条厚度
       progress: {
         type: Array
@@ -82,32 +108,22 @@ export default {
       }, // 进度条颜色
       backgroundColor: {
         type: String,
-        default: "#F1F1F1"
       }, // 背景颜色
       isAnimation: {
         // 是否是动画效果
         type: Boolean,
-        default: false
       },
       isRound: {
         // 是否是圆形画笔
         type: Boolean,
-        default: false
-      },
-      id: {
-        // 组件的id，多组件共存时使用
-        type: [String, Number],
-        default: 1
       },
       duration: {
         // 整个动画时长
         type: [String, Number],
-        default: 1000
       },
       delay: {
         // 延迟多久执行
         type: [String, Number],
-        default: 200
       }
     }
   }
