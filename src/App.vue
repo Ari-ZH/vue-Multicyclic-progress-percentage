@@ -30,7 +30,7 @@
 </style>
 <template>
   <section>
-    <Circle-collection :option="options"></Circle-collection>
+    <Circle-collection :option="options" id='Circle'></Circle-collection>
   </section>
 </template>
 <script>
@@ -42,6 +42,7 @@ export default {
   },
   data() {
     return {
+      // 如果多个同时存在，应向子组件传不同
       options: {
         ringSpacing: 30, // 环间距
         ringNum: 5, //环的个数
@@ -59,7 +60,9 @@ export default {
         backgroundColor: "#F1F1F1",
         // 动画类型
         timeFunction: "cubic-bezier(0.99, 0.01, 0.22, 0.94)",
+        // 是否动画效果
         // isAnimation:false,
+        // 是否圆形描边
         // isRound:false
       }
     };

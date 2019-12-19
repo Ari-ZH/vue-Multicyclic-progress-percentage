@@ -16,4 +16,30 @@
 -其中circle-progress.vue为[这个项目](https://github.com/Momo707577045/vue-circle-progress)的源码，稍做了修改
 # 使用方法如下
 - 各个参数名称以及使用方法可以查看App.vue以及circleCollection.vue中的注释。
+- 参数
+` // 如果多个同时存在，应向子组件传不同
+  options: {
+        ringSpacing: 30, // 环间距
+        ringNum: 5, //环的个数
+        width: 320,
+        // 最大环宽度  直径
+        radius: 10,
+        //  环宽
+        progressPro: [7, 17, 17, 77, 77],
+        // 各个环百分比
+        barColors: ["#FF82A2", "#FEDD5E", "#70D2C9", "#5FC2FA", "#5FA1F7"],
+        // 各个颜色
+        duration: 1000,
+        // 动画时长
+        titles: ["测试1", "测试2", "测试3", "测试4", "测试5"],
+        backgroundColor: "#F1F1F1",
+        // 动画类型
+        timeFunction: "cubic-bezier(0.99, 0.01, 0.22, 0.94)",
+        // 是否动画效果
+        // isAnimation:false,
+        // 是否圆形描边
+        // isRound:false
+      }`
+- 使用
+` <Circle-collection :option="options" id='Circle'></Circle-collection>`
 - 组件原理及详细介绍，可以去原项目查看。
