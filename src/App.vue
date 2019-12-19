@@ -1,40 +1,5 @@
 <!--用户基本信息页面-->
 <style scoped lang="scss">
-// .p-switch {
-//   position: fixed;
-//   right: 100px;
-//   top: 20px;
-//   margin: 30px auto 0;
-//   width: 200px;
-//   height: 40px;
-//   color: white;
-//   cursor: pointer;
-//   line-height: 40px;
-//   font-size: 20px;
-//   text-align: center;
-//   border-radius: 4px;
-//   background-color: #3d8ac7;
-//   z-index: 2;
-// }
-// .circleSmiall {
-//   position: absolute;
-//   &:nth-of-type(1) {
-//     top: 80px;
-//     left: 80px;
-//   }
-//   &:nth-of-type(2) {
-//     top: 60px;
-//     left: 60px;
-//   }
-//   &:nth-of-type(3) {
-//     top: 40px;
-//     left: 40px;
-//   }
-//   &:nth-of-type(4) {
-//     top: 20px;
-//     left: 20px;
-//   }
-// }
 .p-test {
   position: relative;
   background-color: white;
