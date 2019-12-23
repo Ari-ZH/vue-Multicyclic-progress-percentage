@@ -31,6 +31,7 @@
 <template>
   <section>
     <Circle-collection :option="options" id='Circle'></Circle-collection>
+    <button @click="changeProgress">点击修改进度条（测试刷新视图）</button>
   </section>
 </template>
 <script>
@@ -70,6 +71,9 @@ export default {
   watch: {
   },
   methods: {
+    changeProgress(){
+      this.options.progressPro = [11,22,33,44,55]
+    }
   }
 };
 </script>
